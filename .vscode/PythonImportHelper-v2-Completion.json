@@ -52,7 +52,7 @@
         "kind": 6,
         "importPath": "app.models.usermodel",
         "description": "app.models.usermodel",
-        "peekOfCode": "class AuthUser(BaseModel):\n    username: str\n    password: str\nclass UserIn(BaseModel):\n    firstName: str\n    lastName: str\n    username: str\n    password: str\n    email: EmailStr\n    phoneNumber: str | None = None",
+        "peekOfCode": "class AuthUser(BaseModel):\n    username: str\n    password: str\nclass UserIn(BaseModel):\n    firstName: str\n    lastName: str\n    username: str\n    password: str\n    email: EmailStr\n    phoneNumber: str",
         "detail": "app.models.usermodel",
         "documentation": {}
     },
@@ -61,7 +61,7 @@
         "kind": 6,
         "importPath": "app.models.usermodel",
         "description": "app.models.usermodel",
-        "peekOfCode": "class UserIn(BaseModel):\n    firstName: str\n    lastName: str\n    username: str\n    password: str\n    email: EmailStr\n    phoneNumber: str | None = None\nclass UserOut(BaseModel):\n    username: str\n    email: EmailStr",
+        "peekOfCode": "class UserIn(BaseModel):\n    firstName: str\n    lastName: str\n    username: str\n    password: str\n    email: EmailStr\n    phoneNumber: str\nclass UserOut(BaseModel):\n    username: str\n    email: EmailStr",
         "detail": "app.models.usermodel",
         "documentation": {}
     },
