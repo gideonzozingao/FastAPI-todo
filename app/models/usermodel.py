@@ -8,9 +8,12 @@ class AuthUser(BaseModel):
 
 
 class UserIn(BaseModel):
+    firstName: str
+    lastName: str
     username: str
     password: str
     email: EmailStr
+    phoneNumber: str | None = None
 
 
 class UserOut(BaseModel):

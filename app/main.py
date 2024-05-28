@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from users.usermodel import AuthUser
+from models.usermodel import AuthUser
 
 app = FastAPI()
 
