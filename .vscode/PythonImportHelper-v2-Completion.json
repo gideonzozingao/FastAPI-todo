@@ -146,6 +146,70 @@
         "documentation": {}
     },
     {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Header",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "Depends",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -170,43 +234,27 @@
         "documentation": {}
     },
     {
-        "label": "crud",
-        "importPath": "database",
-        "description": "database",
+        "label": "get_token_header",
+        "importPath": "dependencies",
+        "description": "dependencies",
         "isExtraImport": true,
-        "detail": "database",
+        "detail": "dependencies",
         "documentation": {}
     },
     {
-        "label": "models",
-        "importPath": "database",
-        "description": "database",
+        "label": "get_token_header",
+        "importPath": "dependencies",
+        "description": "dependencies",
         "isExtraImport": true,
-        "detail": "database",
+        "detail": "dependencies",
         "documentation": {}
     },
     {
-        "label": "schemas",
-        "importPath": "database",
-        "description": "database",
+        "label": "Annotated",
+        "importPath": "typing",
+        "description": "typing",
         "isExtraImport": true,
-        "detail": "database",
-        "documentation": {}
-    },
-    {
-        "label": "SessionLocal",
-        "importPath": "database.database",
-        "description": "database.database",
-        "isExtraImport": true,
-        "detail": "database.database",
-        "documentation": {}
-    },
-    {
-        "label": "engine",
-        "importPath": "database.database",
-        "description": "database.database",
-        "isExtraImport": true,
-        "detail": "database.database",
+        "detail": "typing",
         "documentation": {}
     },
     {
@@ -432,6 +480,42 @@
         "description": "app.database.usermodel",
         "peekOfCode": "def fake_save_user(user_in: UserIn):\n    hashed_password = fake_password_hasher(user_in.password)\n    user_in_db = UserInDB(**user_in.dict(), hashed_password=hashed_password)\n    print(\"User saved! ..not really\")\n    return user_in_db",
         "detail": "app.database.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "app.routers.items",
+        "description": "app.routers.items",
+        "peekOfCode": "router = APIRouter(\n    prefix=\"/items\",\n    tags=[\"items\"],\n    dependencies=[Depends(get_token_header)],\n    responses={404: {\"description\": \"Not found\"}},\n)\nfake_items_db = {\"plumbus\": {\"name\": \"Plumbus\"}, \"gun\": {\"name\": \"Portal Gun\"}}\n@router.get(\"/\")\nasync def read_items():\n    return fake_items_db",
+        "detail": "app.routers.items",
+        "documentation": {}
+    },
+    {
+        "label": "fake_items_db",
+        "kind": 5,
+        "importPath": "app.routers.items",
+        "description": "app.routers.items",
+        "peekOfCode": "fake_items_db = {\"plumbus\": {\"name\": \"Plumbus\"}, \"gun\": {\"name\": \"Portal Gun\"}}\n@router.get(\"/\")\nasync def read_items():\n    return fake_items_db\n@router.get(\"/{item_id}\")\nasync def read_item(item_id: str):\n    if item_id not in fake_items_db:\n        raise HTTPException(status_code=404, detail=\"Item not found\")\n    return {\"name\": fake_items_db[item_id][\"name\"], \"item_id\": item_id}\n@router.put(",
+        "detail": "app.routers.items",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "app.routers.users",
+        "description": "app.routers.users",
+        "peekOfCode": "router = APIRouter(\n    prefix=\"/items\",\n    tags=[\"items\"],\n    dependencies=[Depends(get_token_header)],\n    responses={404: {\"description\": \"Not found\"}},\n)\nrouter = APIRouter()\n@router.get(\"/users/\", tags=[\"users\"])\nasync def read_users():\n    return [{\"username\": \"Rick\"}, {\"username\": \"Morty\"}]",
+        "detail": "app.routers.users",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "app.routers.users",
+        "description": "app.routers.users",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/users/\", tags=[\"users\"])\nasync def read_users():\n    return [{\"username\": \"Rick\"}, {\"username\": \"Morty\"}]\n@router.get(\"/users/me\", tags=[\"users\"])\nasync def read_user_me():\n    return {\"username\": \"fakecurrentuser\"}\n@router.get(\"/users/{username}\", tags=[\"users\"])\nasync def read_user(username: str):\n    return {\"username\": username}",
+        "detail": "app.routers.users",
         "documentation": {}
     },
     {
