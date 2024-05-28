@@ -5,9 +5,9 @@ from models.usermodel import AuthUser
 app = FastAPI()
 
 
-@app.get("/")
-async def root(arg):
-    return {"message": "Hello World"}
+@app.get("/health")
+async def root():
+    return {"message": "Api is running"}
 
 
 @app.post("/auth")

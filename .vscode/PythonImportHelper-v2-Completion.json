@@ -1,5 +1,14 @@
 [
     {
+        "label": "fastapi",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "FastAPI",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -45,6 +54,24 @@
         "description": "models.usermodel",
         "isExtraImport": true,
         "detail": "models.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "sqlalchemy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "passlib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "passlib",
+        "description": "passlib",
+        "detail": "passlib",
         "documentation": {}
     },
     {
@@ -106,7 +133,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\nasync def root(arg):\n    return {\"message\": \"Hello World\"}\n@app.post(\"/auth\")\nasync def auth_user(user: AuthUser):\n    return {\"user\": user}",
+        "peekOfCode": "app = FastAPI()\n@app.get(\"/health\")\nasync def root():\n    return {\"message\": \"Api is running\"}\n@app.post(\"/auth\")\nasync def auth_user(user: AuthUser):\n    return {\"user\": user}",
         "detail": "app.main",
         "documentation": {}
     }
