@@ -1,0 +1,113 @@
+[
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "EmailStr",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "AuthUser",
+        "importPath": "users.usermodel",
+        "description": "users.usermodel",
+        "isExtraImport": true,
+        "detail": "users.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "AuthUser",
+        "kind": 6,
+        "importPath": "app.users.usermodel",
+        "description": "app.users.usermodel",
+        "peekOfCode": "class AuthUser(BaseModel):\n    username: str\n    password: str\nclass UserIn(BaseModel):\n    username: str\n    password: str\n    email: EmailStr\nclass UserOut(BaseModel):\n    username: str\n    email: EmailStr",
+        "detail": "app.users.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "UserIn",
+        "kind": 6,
+        "importPath": "app.users.usermodel",
+        "description": "app.users.usermodel",
+        "peekOfCode": "class UserIn(BaseModel):\n    username: str\n    password: str\n    email: EmailStr\nclass UserOut(BaseModel):\n    username: str\n    email: EmailStr\nclass UserInDB(BaseModel):\n    username: str\n    hashed_password: str",
+        "detail": "app.users.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "UserOut",
+        "kind": 6,
+        "importPath": "app.users.usermodel",
+        "description": "app.users.usermodel",
+        "peekOfCode": "class UserOut(BaseModel):\n    username: str\n    email: EmailStr\nclass UserInDB(BaseModel):\n    username: str\n    hashed_password: str\n    email: EmailStr\ndef fake_password_hasher(raw_password: str):\n    return \"supersecret\" + raw_password\ndef fake_save_user(user_in: UserIn):",
+        "detail": "app.users.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "UserInDB",
+        "kind": 6,
+        "importPath": "app.users.usermodel",
+        "description": "app.users.usermodel",
+        "peekOfCode": "class UserInDB(BaseModel):\n    username: str\n    hashed_password: str\n    email: EmailStr\ndef fake_password_hasher(raw_password: str):\n    return \"supersecret\" + raw_password\ndef fake_save_user(user_in: UserIn):\n    hashed_password = fake_password_hasher(user_in.password)\n    user_in_db = UserInDB(**user_in.dict(), hashed_password=hashed_password)\n    print(\"User saved! ..not really\")",
+        "detail": "app.users.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "fake_password_hasher",
+        "kind": 2,
+        "importPath": "app.users.usermodel",
+        "description": "app.users.usermodel",
+        "peekOfCode": "def fake_password_hasher(raw_password: str):\n    return \"supersecret\" + raw_password\ndef fake_save_user(user_in: UserIn):\n    hashed_password = fake_password_hasher(user_in.password)\n    user_in_db = UserInDB(**user_in.dict(), hashed_password=hashed_password)\n    print(\"User saved! ..not really\")\n    return user_in_db",
+        "detail": "app.users.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "fake_save_user",
+        "kind": 2,
+        "importPath": "app.users.usermodel",
+        "description": "app.users.usermodel",
+        "peekOfCode": "def fake_save_user(user_in: UserIn):\n    hashed_password = fake_password_hasher(user_in.password)\n    user_in_db = UserInDB(**user_in.dict(), hashed_password=hashed_password)\n    print(\"User saved! ..not really\")\n    return user_in_db",
+        "detail": "app.users.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\nasync def root(arg):\n    return {\"message\": \"Hello World\"}\n@app.post(\"/auth\")\nasync def auth_user(user: AuthUser):\n    return {\"user\": user}",
+        "detail": "app.main",
+        "documentation": {}
+    }
+]
