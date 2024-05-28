@@ -1,27 +1,107 @@
 [
     {
-        "label": "fastapi",
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sqlalchemy",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "detail": "fastapi",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "detail": "fastapi",
+        "detail": "sqlalchemy",
         "documentation": {}
     },
     {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
+        "label": "Boolean",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
         "isExtraImport": true,
-        "detail": "fastapi",
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.ext.declarative",
+        "description": "sqlalchemy.ext.declarative",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.declarative",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
         "documentation": {}
     },
     {
@@ -49,20 +129,84 @@
         "documentation": {}
     },
     {
-        "label": "AuthUser",
-        "importPath": "models.usermodel",
-        "description": "models.usermodel",
+        "label": "fastapi",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "models.usermodel",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "sqlalchemy",
-        "kind": 6,
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "importPath": "sqlalchemy",
-        "description": "sqlalchemy",
-        "detail": "sqlalchemy",
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "crud",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "schemas",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "importPath": "database.database",
+        "description": "database.database",
+        "isExtraImport": true,
+        "detail": "database.database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "importPath": "database.database",
+        "description": "database.database",
+        "isExtraImport": true,
+        "detail": "database.database",
         "documentation": {}
     },
     {
@@ -75,57 +219,273 @@
         "documentation": {}
     },
     {
+        "label": "get_user",
+        "kind": 2,
+        "importPath": "app.database.crud",
+        "description": "app.database.crud",
+        "peekOfCode": "def get_user(db: Session, user_id: int):\n    return db.query(models.User).filter(models.User.id == user_id).first()\ndef get_user_by_email(db: Session, email: str):\n    return db.query(models.User).filter(models.User.email == email).first()\ndef get_users(db: Session, skip: int = 0, limit: int = 100):\n    return db.query(models.User).offset(skip).limit(limit).all()\ndef create_user(db: Session, user: schemas.UserCreate):\n    fake_hashed_password = user.password + \"notreallyhashed\"\n    db_user = models.User(email=user.email, hashed_password=fake_hashed_password)\n    db.add(db_user)",
+        "detail": "app.database.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_by_email",
+        "kind": 2,
+        "importPath": "app.database.crud",
+        "description": "app.database.crud",
+        "peekOfCode": "def get_user_by_email(db: Session, email: str):\n    return db.query(models.User).filter(models.User.email == email).first()\ndef get_users(db: Session, skip: int = 0, limit: int = 100):\n    return db.query(models.User).offset(skip).limit(limit).all()\ndef create_user(db: Session, user: schemas.UserCreate):\n    fake_hashed_password = user.password + \"notreallyhashed\"\n    db_user = models.User(email=user.email, hashed_password=fake_hashed_password)\n    db.add(db_user)\n    db.commit()\n    db.refresh(db_user)",
+        "detail": "app.database.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_users",
+        "kind": 2,
+        "importPath": "app.database.crud",
+        "description": "app.database.crud",
+        "peekOfCode": "def get_users(db: Session, skip: int = 0, limit: int = 100):\n    return db.query(models.User).offset(skip).limit(limit).all()\ndef create_user(db: Session, user: schemas.UserCreate):\n    fake_hashed_password = user.password + \"notreallyhashed\"\n    db_user = models.User(email=user.email, hashed_password=fake_hashed_password)\n    db.add(db_user)\n    db.commit()\n    db.refresh(db_user)\n    return db_user\ndef get_items(db: Session, skip: int = 0, limit: int = 100):",
+        "detail": "app.database.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "kind": 2,
+        "importPath": "app.database.crud",
+        "description": "app.database.crud",
+        "peekOfCode": "def create_user(db: Session, user: schemas.UserCreate):\n    fake_hashed_password = user.password + \"notreallyhashed\"\n    db_user = models.User(email=user.email, hashed_password=fake_hashed_password)\n    db.add(db_user)\n    db.commit()\n    db.refresh(db_user)\n    return db_user\ndef get_items(db: Session, skip: int = 0, limit: int = 100):\n    return db.query(models.Item).offset(skip).limit(limit).all()\ndef create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):",
+        "detail": "app.database.crud",
+        "documentation": {}
+    },
+    {
+        "label": "get_items",
+        "kind": 2,
+        "importPath": "app.database.crud",
+        "description": "app.database.crud",
+        "peekOfCode": "def get_items(db: Session, skip: int = 0, limit: int = 100):\n    return db.query(models.Item).offset(skip).limit(limit).all()\ndef create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):\n    db_item = models.Item(**item.dict(), owner_id=user_id)\n    db.add(db_item)\n    db.commit()\n    db.refresh(db_item)\n    return db_item",
+        "detail": "app.database.crud",
+        "documentation": {}
+    },
+    {
+        "label": "create_user_item",
+        "kind": 2,
+        "importPath": "app.database.crud",
+        "description": "app.database.crud",
+        "peekOfCode": "def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):\n    db_item = models.Item(**item.dict(), owner_id=user_id)\n    db.add(db_item)\n    db.commit()\n    db.refresh(db_item)\n    return db_item",
+        "detail": "app.database.crud",
+        "documentation": {}
+    },
+    {
+        "label": "SQLALCHEMY_DATABASE_URL",
+        "kind": 5,
+        "importPath": "app.database.database",
+        "description": "app.database.database",
+        "peekOfCode": "SQLALCHEMY_DATABASE_URL = \"sqlite:///./database.db\"\n# SQLALCHEMY_DATABASE_URL = \"postgresql://user:password@postgresserver/db\"\nengine = create_engine(\n    SQLALCHEMY_DATABASE_URL, connect_args={\"check_same_thread\": False}\n)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "app.database.database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "app.database.database",
+        "description": "app.database.database",
+        "peekOfCode": "engine = create_engine(\n    SQLALCHEMY_DATABASE_URL, connect_args={\"check_same_thread\": False}\n)\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "app.database.database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "kind": 5,
+        "importPath": "app.database.database",
+        "description": "app.database.database",
+        "peekOfCode": "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\nBase = declarative_base()",
+        "detail": "app.database.database",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "app.database.database",
+        "description": "app.database.database",
+        "peekOfCode": "Base = declarative_base()",
+        "detail": "app.database.database",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "app.database.models",
+        "description": "app.database.models",
+        "peekOfCode": "class User(Base):\n    __tablename__ = \"users\"\n    id = Column(Integer, primary_key=True)\n    email = Column(String, unique=True, index=True)\n    hashed_password = Column(String)\n    is_active = Column(Boolean, default=True)\n    items = relationship(\"Item\", back_populates=\"owner\")\nclass Item(Base):\n    __tablename__ = \"items\"\n    id = Column(Integer, primary_key=True)",
+        "detail": "app.database.models",
+        "documentation": {}
+    },
+    {
+        "label": "Item",
+        "kind": 6,
+        "importPath": "app.database.models",
+        "description": "app.database.models",
+        "peekOfCode": "class Item(Base):\n    __tablename__ = \"items\"\n    id = Column(Integer, primary_key=True)\n    title = Column(String, index=True)\n    description = Column(String, index=True)\n    owner_id = Column(Integer, ForeignKey(\"users.id\"))\n    owner = relationship(\"User\", back_populates=\"items\")",
+        "detail": "app.database.models",
+        "documentation": {}
+    },
+    {
+        "label": "ItemBase",
+        "kind": 6,
+        "importPath": "app.database.schemas",
+        "description": "app.database.schemas",
+        "peekOfCode": "class ItemBase(BaseModel):\n    title: str\n    description: str\nclass ItemCreate(ItemBase):\n    pass\nclass Item(ItemBase):\n    id: int\n    owner_id: int\n    class Config:\n        orm_mode = True",
+        "detail": "app.database.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "ItemCreate",
+        "kind": 6,
+        "importPath": "app.database.schemas",
+        "description": "app.database.schemas",
+        "peekOfCode": "class ItemCreate(ItemBase):\n    pass\nclass Item(ItemBase):\n    id: int\n    owner_id: int\n    class Config:\n        orm_mode = True\nclass UserBase(BaseModel):\n    email: str\nclass UserCreate(UserBase):",
+        "detail": "app.database.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "Item",
+        "kind": 6,
+        "importPath": "app.database.schemas",
+        "description": "app.database.schemas",
+        "peekOfCode": "class Item(ItemBase):\n    id: int\n    owner_id: int\n    class Config:\n        orm_mode = True\nclass UserBase(BaseModel):\n    email: str\nclass UserCreate(UserBase):\n    password: str\nclass User(UserBase):",
+        "detail": "app.database.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "UserBase",
+        "kind": 6,
+        "importPath": "app.database.schemas",
+        "description": "app.database.schemas",
+        "peekOfCode": "class UserBase(BaseModel):\n    email: str\nclass UserCreate(UserBase):\n    password: str\nclass User(UserBase):\n    id: int\n    is_active: bool\n    items: list[Item] = []\n    class Config:\n        orm_mode = True",
+        "detail": "app.database.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreate",
+        "kind": 6,
+        "importPath": "app.database.schemas",
+        "description": "app.database.schemas",
+        "peekOfCode": "class UserCreate(UserBase):\n    password: str\nclass User(UserBase):\n    id: int\n    is_active: bool\n    items: list[Item] = []\n    class Config:\n        orm_mode = True",
+        "detail": "app.database.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "app.database.schemas",
+        "description": "app.database.schemas",
+        "peekOfCode": "class User(UserBase):\n    id: int\n    is_active: bool\n    items: list[Item] = []\n    class Config:\n        orm_mode = True",
+        "detail": "app.database.schemas",
+        "documentation": {}
+    },
+    {
         "label": "AuthUser",
         "kind": 6,
-        "importPath": "app.models.usermodel",
-        "description": "app.models.usermodel",
+        "importPath": "app.database.usermodel",
+        "description": "app.database.usermodel",
         "peekOfCode": "class AuthUser(BaseModel):\n    username: str\n    password: str\nclass UserIn(BaseModel):\n    firstName: str\n    lastName: str\n    username: str\n    password: str\n    email: EmailStr\n    phoneNumber: str",
-        "detail": "app.models.usermodel",
+        "detail": "app.database.usermodel",
         "documentation": {}
     },
     {
         "label": "UserIn",
         "kind": 6,
-        "importPath": "app.models.usermodel",
-        "description": "app.models.usermodel",
+        "importPath": "app.database.usermodel",
+        "description": "app.database.usermodel",
         "peekOfCode": "class UserIn(BaseModel):\n    firstName: str\n    lastName: str\n    username: str\n    password: str\n    email: EmailStr\n    phoneNumber: str\nclass UserOut(BaseModel):\n    username: str\n    email: EmailStr",
-        "detail": "app.models.usermodel",
+        "detail": "app.database.usermodel",
         "documentation": {}
     },
     {
         "label": "UserOut",
         "kind": 6,
-        "importPath": "app.models.usermodel",
-        "description": "app.models.usermodel",
+        "importPath": "app.database.usermodel",
+        "description": "app.database.usermodel",
         "peekOfCode": "class UserOut(BaseModel):\n    username: str\n    email: EmailStr\nclass UserInDB(BaseModel):\n    username: str\n    hashed_password: str\n    email: EmailStr\ndef fake_password_hasher(raw_password: str):\n    return \"supersecret\" + raw_password\ndef fake_save_user(user_in: UserIn):",
-        "detail": "app.models.usermodel",
+        "detail": "app.database.usermodel",
         "documentation": {}
     },
     {
         "label": "UserInDB",
         "kind": 6,
-        "importPath": "app.models.usermodel",
-        "description": "app.models.usermodel",
+        "importPath": "app.database.usermodel",
+        "description": "app.database.usermodel",
         "peekOfCode": "class UserInDB(BaseModel):\n    username: str\n    hashed_password: str\n    email: EmailStr\ndef fake_password_hasher(raw_password: str):\n    return \"supersecret\" + raw_password\ndef fake_save_user(user_in: UserIn):\n    hashed_password = fake_password_hasher(user_in.password)\n    user_in_db = UserInDB(**user_in.dict(), hashed_password=hashed_password)\n    print(\"User saved! ..not really\")",
-        "detail": "app.models.usermodel",
+        "detail": "app.database.usermodel",
         "documentation": {}
     },
     {
         "label": "fake_password_hasher",
         "kind": 2,
-        "importPath": "app.models.usermodel",
-        "description": "app.models.usermodel",
+        "importPath": "app.database.usermodel",
+        "description": "app.database.usermodel",
         "peekOfCode": "def fake_password_hasher(raw_password: str):\n    return \"supersecret\" + raw_password\ndef fake_save_user(user_in: UserIn):\n    hashed_password = fake_password_hasher(user_in.password)\n    user_in_db = UserInDB(**user_in.dict(), hashed_password=hashed_password)\n    print(\"User saved! ..not really\")\n    return user_in_db",
-        "detail": "app.models.usermodel",
+        "detail": "app.database.usermodel",
         "documentation": {}
     },
     {
         "label": "fake_save_user",
         "kind": 2,
-        "importPath": "app.models.usermodel",
-        "description": "app.models.usermodel",
+        "importPath": "app.database.usermodel",
+        "description": "app.database.usermodel",
         "peekOfCode": "def fake_save_user(user_in: UserIn):\n    hashed_password = fake_password_hasher(user_in.password)\n    user_in_db = UserInDB(**user_in.dict(), hashed_password=hashed_password)\n    print(\"User saved! ..not really\")\n    return user_in_db",
-        "detail": "app.models.usermodel",
+        "detail": "app.database.usermodel",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n@app.post(\"/users/\", response_model=schemas.User)\ndef create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):\n    db_user = crud.get_user_by_email(db, email=user.email)\n    if db_user:",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):\n    db_user = crud.get_user_by_email(db, email=user.email)\n    if db_user:\n        raise HTTPException(status_code=400, detail=\"Email already registered\")\n    return crud.create_user(db=db, user=user)\n@app.get(\"/users/\", response_model=list[schemas.User])\ndef read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    users = crud.get_users(db, skip=skip, limit=limit)\n    return users\n@app.get(\"/users/{user_id}\", response_model=schemas.User)",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "read_users",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    users = crud.get_users(db, skip=skip, limit=limit)\n    return users\n@app.get(\"/users/{user_id}\", response_model=schemas.User)\ndef read_user(user_id: int, db: Session = Depends(get_db)):\n    db_user = crud.get_user(db, user_id=user_id)\n    if db_user is None:\n        raise HTTPException(status_code=404, detail=\"User not found\")\n    return db_user\n@app.post(\"/users/{user_id}/items/\", response_model=schemas.Item)",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "read_user",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def read_user(user_id: int, db: Session = Depends(get_db)):\n    db_user = crud.get_user(db, user_id=user_id)\n    if db_user is None:\n        raise HTTPException(status_code=404, detail=\"User not found\")\n    return db_user\n@app.post(\"/users/{user_id}/items/\", response_model=schemas.Item)\ndef create_item_for_user(\n    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)\n):\n    return crud.create_user_item(db=db, item=item, user_id=user_id)",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "create_item_for_user",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def create_item_for_user(\n    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)\n):\n    return crud.create_user_item(db=db, item=item, user_id=user_id)\n@app.get(\"/items/\", response_model=list[schemas.Item])\ndef read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    items = crud.get_items(db, skip=skip, limit=limit)\n    return items",
+        "detail": "app.main",
+        "documentation": {}
+    },
+    {
+        "label": "read_items",
+        "kind": 2,
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    items = crud.get_items(db, skip=skip, limit=limit)\n    return items",
+        "detail": "app.main",
         "documentation": {}
     },
     {
@@ -133,7 +493,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "app = FastAPI()\n@app.get(\"/health\")\nasync def root():\n    return {\"message\": \"Api is running\"}\n@app.post(\"/auth\")\nasync def auth_user(user: AuthUser):\n    return {\"user\": user}",
+        "peekOfCode": "app = FastAPI()\n# Dependency\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n@app.post(\"/users/\", response_model=schemas.User)\ndef create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):",
         "detail": "app.main",
         "documentation": {}
     }
