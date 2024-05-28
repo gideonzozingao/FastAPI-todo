@@ -13,7 +13,7 @@ class UserIn(BaseModel):
     username: str
     password: str
     email: EmailStr
-    phoneNumber: str | None = None
+    phoneNumber: str
 
 
 class UserOut(BaseModel):
