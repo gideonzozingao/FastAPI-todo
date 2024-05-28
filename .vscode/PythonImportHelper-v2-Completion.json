@@ -32,6 +32,22 @@
         "documentation": {}
     },
     {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
         "label": "sqlalchemy",
         "kind": 6,
         "isExtraImport": true,
@@ -194,6 +210,30 @@
         "documentation": {}
     },
     {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "Header",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -231,22 +271,6 @@
         "description": "fastapi",
         "isExtraImport": true,
         "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "get_token_header",
-        "importPath": "dependencies",
-        "description": "dependencies",
-        "isExtraImport": true,
-        "detail": "dependencies",
-        "documentation": {}
-    },
-    {
-        "label": "get_token_header",
-        "importPath": "dependencies",
-        "description": "dependencies",
-        "isExtraImport": true,
-        "detail": "dependencies",
         "documentation": {}
     },
     {
@@ -485,27 +509,63 @@
     {
         "label": "router",
         "kind": 5,
-        "importPath": "app.routers.items",
-        "description": "app.routers.items",
-        "peekOfCode": "router = APIRouter(\n    prefix=\"/items\",\n    tags=[\"items\"],\n    dependencies=[Depends(get_token_header)],\n    responses={404: {\"description\": \"Not found\"}},\n)\nfake_items_db = {\"plumbus\": {\"name\": \"Plumbus\"}, \"gun\": {\"name\": \"Portal Gun\"}}\n@router.get(\"/\")\nasync def read_items():\n    return fake_items_db",
-        "detail": "app.routers.items",
+        "importPath": "app.internals.admin",
+        "description": "app.internals.admin",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/users/\", tags=[\"users\"])\nasync def read_users():\n    return [{\"username\": \"Rick\"}, {\"username\": \"Morty\"}]\n@router.get(\"/users/me\", tags=[\"users\"])\nasync def read_user_me():\n    return {\"username\": \"fakecurrentuser\"}\n@router.get(\"/users/{username}\", tags=[\"users\"])\nasync def read_user(username: str):\n    return {\"username\": username}",
+        "detail": "app.internals.admin",
         "documentation": {}
     },
     {
-        "label": "fake_items_db",
-        "kind": 5,
+        "label": "read_items",
+        "kind": 2,
         "importPath": "app.routers.items",
         "description": "app.routers.items",
-        "peekOfCode": "fake_items_db = {\"plumbus\": {\"name\": \"Plumbus\"}, \"gun\": {\"name\": \"Portal Gun\"}}\n@router.get(\"/\")\nasync def read_items():\n    return fake_items_db\n@router.get(\"/{item_id}\")\nasync def read_item(item_id: str):\n    if item_id not in fake_items_db:\n        raise HTTPException(status_code=404, detail=\"Item not found\")\n    return {\"name\": fake_items_db[item_id][\"name\"], \"item_id\": item_id}\n@router.put(",
+        "peekOfCode": "def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    items = crud.get_items(db, skip=skip, limit=limit)\n    return items",
         "detail": "app.routers.items",
         "documentation": {}
     },
     {
         "label": "router",
         "kind": 5,
+        "importPath": "app.routers.items",
+        "description": "app.routers.items",
+        "peekOfCode": "router = APIRouter(\n    prefix=\"/items\",\n    tags=[\"items\"],\n    # dependencies=[Depends(get_token_header)],\n    responses={404: {\"description\": \"Not found\"}},\n)\n@router.get(\"/\", response_model=list[schemas.Item])\ndef read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    items = crud.get_items(db, skip=skip, limit=limit)\n    return items",
+        "detail": "app.routers.items",
+        "documentation": {}
+    },
+    {
+        "label": "create_user",
+        "kind": 2,
         "importPath": "app.routers.users",
         "description": "app.routers.users",
-        "peekOfCode": "router = APIRouter(\n    prefix=\"/items\",\n    tags=[\"items\"],\n    dependencies=[Depends(get_token_header)],\n    responses={404: {\"description\": \"Not found\"}},\n)\nrouter = APIRouter()\n@router.get(\"/users/\", tags=[\"users\"])\nasync def read_users():\n    return [{\"username\": \"Rick\"}, {\"username\": \"Morty\"}]",
+        "peekOfCode": "def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):\n    db_user = crud.get_user_by_email(db, email=user.email)\n    if db_user:\n        raise HTTPException(status_code=400, detail=\"Email already registered\")\n    return crud.create_user(db=db, user=user)\n@router.get(\"/users/\", response_model=list[schemas.User])\ndef read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    users = crud.get_users(db, skip=skip, limit=limit)\n    return users\n@router.get(\"/users/{user_id}\", response_model=schemas.User)",
+        "detail": "app.routers.users",
+        "documentation": {}
+    },
+    {
+        "label": "read_users",
+        "kind": 2,
+        "importPath": "app.routers.users",
+        "description": "app.routers.users",
+        "peekOfCode": "def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    users = crud.get_users(db, skip=skip, limit=limit)\n    return users\n@router.get(\"/users/{user_id}\", response_model=schemas.User)\ndef read_user(user_id: int, db: Session = Depends(get_db)):\n    db_user = crud.get_user(db, user_id=user_id)\n    if db_user is None:\n        raise HTTPException(status_code=404, detail=\"User not found\")\n    return db_user\n@router.post(\"/users/{user_id}/items/\", response_model=schemas.Item)",
+        "detail": "app.routers.users",
+        "documentation": {}
+    },
+    {
+        "label": "read_user",
+        "kind": 2,
+        "importPath": "app.routers.users",
+        "description": "app.routers.users",
+        "peekOfCode": "def read_user(user_id: int, db: Session = Depends(get_db)):\n    db_user = crud.get_user(db, user_id=user_id)\n    if db_user is None:\n        raise HTTPException(status_code=404, detail=\"User not found\")\n    return db_user\n@router.post(\"/users/{user_id}/items/\", response_model=schemas.Item)\ndef create_item_for_user(\n    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)\n):\n    return crud.create_user_item(db=db, item=item, user_id=user_id)",
+        "detail": "app.routers.users",
+        "documentation": {}
+    },
+    {
+        "label": "create_item_for_user",
+        "kind": 2,
+        "importPath": "app.routers.users",
+        "description": "app.routers.users",
+        "peekOfCode": "def create_item_for_user(\n    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)\n):\n    return crud.create_user_item(db=db, item=item, user_id=user_id)",
         "detail": "app.routers.users",
         "documentation": {}
     },
@@ -514,62 +574,26 @@
         "kind": 5,
         "importPath": "app.routers.users",
         "description": "app.routers.users",
-        "peekOfCode": "router = APIRouter()\n@router.get(\"/users/\", tags=[\"users\"])\nasync def read_users():\n    return [{\"username\": \"Rick\"}, {\"username\": \"Morty\"}]\n@router.get(\"/users/me\", tags=[\"users\"])\nasync def read_user_me():\n    return {\"username\": \"fakecurrentuser\"}\n@router.get(\"/users/{username}\", tags=[\"users\"])\nasync def read_user(username: str):\n    return {\"username\": username}",
+        "peekOfCode": "router = APIRouter(\n    prefix=\"/users\",\n    tags=[\"users\"],\n    responses={404: {\"description\": \"Not found\"}},\n)\nrouter = APIRouter()\n@router.post(\"/users/\", response_model=schemas.User)\ndef create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):\n    db_user = crud.get_user_by_email(db, email=user.email)\n    if db_user:",
+        "detail": "app.routers.users",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "app.routers.users",
+        "description": "app.routers.users",
+        "peekOfCode": "router = APIRouter()\n@router.post(\"/users/\", response_model=schemas.User)\ndef create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):\n    db_user = crud.get_user_by_email(db, email=user.email)\n    if db_user:\n        raise HTTPException(status_code=400, detail=\"Email already registered\")\n    return crud.create_user(db=db, user=user)\n@router.get(\"/users/\", response_model=list[schemas.User])\ndef read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    users = crud.get_users(db, skip=skip, limit=limit)",
         "detail": "app.routers.users",
         "documentation": {}
     },
     {
         "label": "get_db",
         "kind": 2,
-        "importPath": "app.main",
-        "description": "app.main",
-        "peekOfCode": "def get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n@app.post(\"/users/\", response_model=schemas.User)\ndef create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):\n    db_user = crud.get_user_by_email(db, email=user.email)\n    if db_user:",
-        "detail": "app.main",
-        "documentation": {}
-    },
-    {
-        "label": "create_user",
-        "kind": 2,
-        "importPath": "app.main",
-        "description": "app.main",
-        "peekOfCode": "def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):\n    db_user = crud.get_user_by_email(db, email=user.email)\n    if db_user:\n        raise HTTPException(status_code=400, detail=\"Email already registered\")\n    return crud.create_user(db=db, user=user)\n@app.get(\"/users/\", response_model=list[schemas.User])\ndef read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    users = crud.get_users(db, skip=skip, limit=limit)\n    return users\n@app.get(\"/users/{user_id}\", response_model=schemas.User)",
-        "detail": "app.main",
-        "documentation": {}
-    },
-    {
-        "label": "read_users",
-        "kind": 2,
-        "importPath": "app.main",
-        "description": "app.main",
-        "peekOfCode": "def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    users = crud.get_users(db, skip=skip, limit=limit)\n    return users\n@app.get(\"/users/{user_id}\", response_model=schemas.User)\ndef read_user(user_id: int, db: Session = Depends(get_db)):\n    db_user = crud.get_user(db, user_id=user_id)\n    if db_user is None:\n        raise HTTPException(status_code=404, detail=\"User not found\")\n    return db_user\n@app.post(\"/users/{user_id}/items/\", response_model=schemas.Item)",
-        "detail": "app.main",
-        "documentation": {}
-    },
-    {
-        "label": "read_user",
-        "kind": 2,
-        "importPath": "app.main",
-        "description": "app.main",
-        "peekOfCode": "def read_user(user_id: int, db: Session = Depends(get_db)):\n    db_user = crud.get_user(db, user_id=user_id)\n    if db_user is None:\n        raise HTTPException(status_code=404, detail=\"User not found\")\n    return db_user\n@app.post(\"/users/{user_id}/items/\", response_model=schemas.Item)\ndef create_item_for_user(\n    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)\n):\n    return crud.create_user_item(db=db, item=item, user_id=user_id)",
-        "detail": "app.main",
-        "documentation": {}
-    },
-    {
-        "label": "create_item_for_user",
-        "kind": 2,
-        "importPath": "app.main",
-        "description": "app.main",
-        "peekOfCode": "def create_item_for_user(\n    user_id: int, item: schemas.ItemCreate, db: Session = Depends(get_db)\n):\n    return crud.create_user_item(db=db, item=item, user_id=user_id)\n@app.get(\"/items/\", response_model=list[schemas.Item])\ndef read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    items = crud.get_items(db, skip=skip, limit=limit)\n    return items",
-        "detail": "app.main",
-        "documentation": {}
-    },
-    {
-        "label": "read_items",
-        "kind": 2,
-        "importPath": "app.main",
-        "description": "app.main",
-        "peekOfCode": "def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):\n    items = crud.get_items(db, skip=skip, limit=limit)\n    return items",
-        "detail": "app.main",
+        "importPath": "app.dependencies",
+        "description": "app.dependencies",
+        "peekOfCode": "def get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "app.dependencies",
         "documentation": {}
     },
     {
@@ -577,7 +601,7 @@
         "kind": 5,
         "importPath": "app.main",
         "description": "app.main",
-        "peekOfCode": "app = FastAPI()\n# Dependency\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n@app.post(\"/users/\", response_model=schemas.User)\ndef create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):",
+        "peekOfCode": "app = FastAPI()\napp.include_router(users.router)\napp.include_router(items.router)\napp.include_router(\n    admin.router,\n    prefix=\"/admin\",\n    tags=[\"admin\"],\n    dependencies=[Depends(get_token_header)],\n    responses={418: {\"description\": \"I'm a teapot\"}},\n)",
         "detail": "app.main",
         "documentation": {}
     }
