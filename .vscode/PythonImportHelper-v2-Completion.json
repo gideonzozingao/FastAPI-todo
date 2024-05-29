@@ -121,43 +121,11 @@
         "documentation": {}
     },
     {
-        "label": "Field",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "BaseModel",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
-        "label": "EmailStr",
-        "importPath": "pydantic",
-        "description": "pydantic",
-        "isExtraImport": true,
-        "detail": "pydantic",
-        "documentation": {}
-    },
-    {
         "label": "fastapi",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "fastapi",
         "description": "fastapi",
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
         "detail": "fastapi",
         "documentation": {}
     },
@@ -450,60 +418,6 @@
         "description": "app.database.schemas",
         "peekOfCode": "class User(UserBase):\n    id: int\n    is_active: bool\n    items: list[Item] = []\n    class Config:\n        orm_mode = True",
         "detail": "app.database.schemas",
-        "documentation": {}
-    },
-    {
-        "label": "AuthUser",
-        "kind": 6,
-        "importPath": "app.database.usermodel",
-        "description": "app.database.usermodel",
-        "peekOfCode": "class AuthUser(BaseModel):\n    username: str\n    password: str\nclass UserIn(BaseModel):\n    firstName: str\n    lastName: str\n    username: str\n    password: str\n    email: EmailStr\n    phoneNumber: str",
-        "detail": "app.database.usermodel",
-        "documentation": {}
-    },
-    {
-        "label": "UserIn",
-        "kind": 6,
-        "importPath": "app.database.usermodel",
-        "description": "app.database.usermodel",
-        "peekOfCode": "class UserIn(BaseModel):\n    firstName: str\n    lastName: str\n    username: str\n    password: str\n    email: EmailStr\n    phoneNumber: str\nclass UserOut(BaseModel):\n    username: str\n    email: EmailStr",
-        "detail": "app.database.usermodel",
-        "documentation": {}
-    },
-    {
-        "label": "UserOut",
-        "kind": 6,
-        "importPath": "app.database.usermodel",
-        "description": "app.database.usermodel",
-        "peekOfCode": "class UserOut(BaseModel):\n    username: str\n    email: EmailStr\nclass UserInDB(BaseModel):\n    username: str\n    hashed_password: str\n    email: EmailStr\ndef fake_password_hasher(raw_password: str):\n    return \"supersecret\" + raw_password\ndef fake_save_user(user_in: UserIn):",
-        "detail": "app.database.usermodel",
-        "documentation": {}
-    },
-    {
-        "label": "UserInDB",
-        "kind": 6,
-        "importPath": "app.database.usermodel",
-        "description": "app.database.usermodel",
-        "peekOfCode": "class UserInDB(BaseModel):\n    username: str\n    hashed_password: str\n    email: EmailStr\ndef fake_password_hasher(raw_password: str):\n    return \"supersecret\" + raw_password\ndef fake_save_user(user_in: UserIn):\n    hashed_password = fake_password_hasher(user_in.password)\n    user_in_db = UserInDB(**user_in.dict(), hashed_password=hashed_password)\n    print(\"User saved! ..not really\")",
-        "detail": "app.database.usermodel",
-        "documentation": {}
-    },
-    {
-        "label": "fake_password_hasher",
-        "kind": 2,
-        "importPath": "app.database.usermodel",
-        "description": "app.database.usermodel",
-        "peekOfCode": "def fake_password_hasher(raw_password: str):\n    return \"supersecret\" + raw_password\ndef fake_save_user(user_in: UserIn):\n    hashed_password = fake_password_hasher(user_in.password)\n    user_in_db = UserInDB(**user_in.dict(), hashed_password=hashed_password)\n    print(\"User saved! ..not really\")\n    return user_in_db",
-        "detail": "app.database.usermodel",
-        "documentation": {}
-    },
-    {
-        "label": "fake_save_user",
-        "kind": 2,
-        "importPath": "app.database.usermodel",
-        "description": "app.database.usermodel",
-        "peekOfCode": "def fake_save_user(user_in: UserIn):\n    hashed_password = fake_password_hasher(user_in.password)\n    user_in_db = UserInDB(**user_in.dict(), hashed_password=hashed_password)\n    print(\"User saved! ..not really\")\n    return user_in_db",
-        "detail": "app.database.usermodel",
         "documentation": {}
     },
     {

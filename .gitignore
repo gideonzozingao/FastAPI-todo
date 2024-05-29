@@ -1,4 +1,4 @@
-app-venv
+fastAPI
 .env
 __pycache__/
 database.db

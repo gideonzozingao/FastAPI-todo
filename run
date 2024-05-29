@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the virtual environment directory and the dependencies file
-VENV_DIR="app-venv"
+VENV_DIR="fastAPI"
 REQUIREMENTS_FILE="requirements.txt"
 
 # Function to check and install packages if not installed
@@ -44,4 +44,4 @@ else
 fi
 
 # Run the FastAPI application
-fastapi dev app/main.py --reload --port 3302
+fastapi dev app/main.py --reload --port 35003
