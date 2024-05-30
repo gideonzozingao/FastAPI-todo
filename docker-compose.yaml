@@ -1,0 +1,14 @@
+version: "3"
+services:
+  api1:
+    build: .
+    ports:
+      ["3301","8000"]
+  api2:
+    build: .
+    ports:
+      ["3302","8000"]
+  api3:
+    build: .
+    ports:
+      ["3303","8000"]
